@@ -1,6 +1,7 @@
 import { Styles } from './NavLinkItem.styles';
 
 import { RinconesIcon, TalleresIcon } from 'assets/icons';
+import { Fragment } from 'react';
 
 type Props = {
   icon: keyof typeof icons;
@@ -21,8 +22,12 @@ export const NavLinkItem = ({ icon, label, route }: Props) => {
   return (
     <li key={label}>
       <Styles.NavLinkItem className={({ isActive }) => (isActive ? 'isActive' : undefined)} key={route} to={route}>
-        <IconComponent isActive={true} />
-        <label>{label}</label>
+        {({ isActive }) => (
+          <Fragment>
+            <IconComponent isActive={isActive} />
+            <Styles.NavLinkItemLabel isActive={isActive}> {label}</Styles.NavLinkItemLabel>
+          </Fragment>
+        )}
       </Styles.NavLinkItem>
     </li>
   );

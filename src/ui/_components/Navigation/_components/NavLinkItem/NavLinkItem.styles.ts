@@ -11,15 +11,6 @@ const NavLinkItem = styled(NavLink)`
   text-decoration: none;
   transition: transform 0.1s ease-in;
 
-  label {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 14px;
-    text-align: center;
-  }
-
   &:active {
     transform: scale(0.9);
     transition: transform 0.1s ease-in;
@@ -28,12 +19,17 @@ const NavLinkItem = styled(NavLink)`
   &.isActive {
     color: ${({ theme }) => theme.colors.primary};
   }
-
-  & img {
-    color: ${({ theme }) => theme.colors.primary};
-    fill: ${({ theme }) => theme.colors.primary};
-    stroke: ${({ theme }) => theme.colors.primary};
-  }
 `;
 
-export const Styles = { NavLinkItem };
+const NavLinkItemLabel = styled('label')<{ isActive: boolean }>`
+  color: ${({ theme, isActive }) => theme.colors[isActive ? 'primary' : 'darkGrey']};
+  cursor: pointer;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 14px;
+  text-align: center;
+`;
+
+export const Styles = { NavLinkItem, NavLinkItemLabel };
