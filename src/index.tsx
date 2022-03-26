@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { RecoilRoot } from 'recoil';
 import { render } from 'react-dom';
 
@@ -7,7 +7,9 @@ import { App } from './App';
 render(
   <StrictMode>
     <RecoilRoot>
-      <App />
+      <Suspense fallback={<div>Loading...</div>}>
+        <App />
+      </Suspense>
     </RecoilRoot>
   </StrictMode>,
   document.getElementById('root')

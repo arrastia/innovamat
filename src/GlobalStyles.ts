@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: center;
         margin: 0;
         margin: 0;
-        transition: all 0.50s linear;
+        /* transition: all 0.50s linear; */
         width: 100%;
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -27,6 +27,16 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        margin-block-end: 0.67em;
+        margin-block-start: 0.67em;
+        margin-inline-end: 0px;
+        margin-inline-start: 0px;
+    }
+
+    h2 {
         font-family: Roboto;
         font-size: 24px;
         font-style: normal;
@@ -34,5 +44,10 @@ export const GlobalStyles = createGlobalStyle`
         letter-spacing: 0em;
         line-height: 28px;
         text-align: left;
+    }
+
+    p {
+        line-height: 22px;
+        margin: 0 0 25px 0;
     }
 `;
