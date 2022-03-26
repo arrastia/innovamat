@@ -5,24 +5,27 @@ import { Styles } from './LikeButton.styles';
 import { likedCardState } from 'ui/_tools/Stores/UserStore';
 
 import { useLocalStorage } from 'ui/_tools/Hooks/useLocalStorage';
+import { useState } from 'react';
 
 type Props = {
   id: string;
 };
 
 export const LikeButton = (props: Props) => {
-  const [favoriteIds, setFavotirteIds] = useLocalStorage('innovamat-favorite-ids', []);
+  const [favoriteIds, setFavoriteIds] = useLocalStorage<string[]>('innovamat-favorite-ids', []);
 
-  const [isLiked, setIsLiked] = useRecoilState(likedCardState(props.id));
+  const [isLiked, setIsLiked] = useState(favoriteIds.includes(props.id));
 
   const toggleLike = () => {
-    setIsLiked(prevState => ({ ...prevState, isLiked: !prevState.isLiked }));
+    setIsLiked(prevState => {
+      return !prevState;
+    });
   };
 
   return (
-    <Styles.LikeButtonWrapper className="middle-wrapper" isLiked={isLiked.isLiked} onClick={toggleLike}>
+    <Styles.LikeButtonWrapper className="middle-wrapper" isLiked={isLiked} onClick={toggleLike}>
       <div className="like-wrapper">
-        <button className={`${isLiked.isLiked ? 'liked' : ''} like-button`}>
+        <button className={`${isLiked ? 'liked' : ''} like-button`}>
           <span className="like-icon">
             <div className="heart-animation-1"></div>
             <div className="heart-animation-2"></div>

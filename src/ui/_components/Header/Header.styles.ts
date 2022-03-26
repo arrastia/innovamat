@@ -10,10 +10,12 @@ const SearchWrapper = styled(Row)`
 
 const Header = styled('header')`
   align-items: center;
+  background: #ededed;
   display: flex;
   flex-shrink: 0;
   gap: 1rem;
-  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  justify-content: center;
   position: relative;
   width: 100%;
   z-index: 1;

@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LikeButton } from '../LikeButton';
 import { Styles } from './Card.styles';
 
 type CardProps = {
@@ -12,16 +13,18 @@ type CardProps = {
   onCardClick: () => void;
 };
 
-export const Card: FC<CardProps> = ({ description, id, image, isLiked, title, toggleLike, onCardClick }) => {
-  const native = useNavigate();
-
+export const Card = ({ description, id, image, title, toggleLike, onCardClick }: CardProps) => {
   return (
-    <Styles.Card onClick={onCardClick}>
-      <span className="title">{title}</span>
-      <span className="description">{description}</span>
-      <img alt="" className="image" src={image} />
+    <Styles.Card>
+      <div onClick={onCardClick}>
+        <img alt="" className="image" src={image} />
+        <span className="title">{title}</span>
+        <span className="description">{description}</span>
+      </div>
 
-      {isLiked && '💜'}
+      <Styles.Favorite>
+        <LikeButton id={id} />
+      </Styles.Favorite>
     </Styles.Card>
   );
 };

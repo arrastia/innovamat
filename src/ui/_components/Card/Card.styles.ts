@@ -1,13 +1,32 @@
 import styled from 'styled-components';
+import { Column } from 'ui/_styles/components/Column';
+
+const Favorite = styled('span')`
+  opacity: 1;
+`;
 
 const Card = styled('div')`
   background: #ffffff;
   border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-
   cursor: pointer;
-  width: 100%;
+  justify-content: center;
   padding: 0.75rem;
+  transition: all 100ms ease-in;
+  width: 300px;
+
+  &:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+    transition: all 100ms ease-in;
+
+    & ${Favorite} {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
 
   .image {
     width: 100%;
@@ -23,20 +42,20 @@ const Card = styled('div')`
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
     letter-spacing: 0em;
-    text-align: left;
+    line-height: 16px;
     margin: 0px;
+    text-align: left;
   }
 
   .description {
+    color: #a3b7b5;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    color: var(--font-dark-grey);
     min-height: 2rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 `;
 
-export const Styles = { Card };
+export const Styles = { Card, Favorite };

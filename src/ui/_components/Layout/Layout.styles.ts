@@ -10,7 +10,8 @@ const Layout = styled('div')`
   height: 100vh;
   justify-content: center;
   min-height: 100vh;
-  padding: 2rem;
+  /* padding: 2rem; */
+  /* padding-top: 1rem; */
   position: relative;
   user-select: none;
   width: 100vw;

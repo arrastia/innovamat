@@ -4,9 +4,10 @@ import { Button as ButtonStyles } from 'ui/_styles/components/Button';
 
 const Button = styled(ButtonStyles)`
   border-radius: 10px;
-  color: ${({ theme }) => theme.colors.white};
+  padding: 0.5rem;
+  /* color: ${({ theme }) => theme.colors.white};
   height: 40px;
-  width: 256px;
+  width: 256px; */
 
   &.primary {
     background: ${({ theme }) => theme.colors.primary};
