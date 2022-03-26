@@ -1,22 +1,21 @@
 import { atom, atomFamily } from 'recoil';
 
-import type { ITag } from 'ui/_components/SearchInput/_components/InputTags/InputTags';
+interface ITag {
+  id: string;
+  value: string;
+}
 
-export const inputTagsState = atomFamily<ITag, number>({
-  key: 'inputTagsState',
-  default: (id: number) => ({
-    id,
-    value: '',
-    isEditing: false
-  })
+export const inputTagState = atomFamily<ITag, string>({
+  key: 'inputTagState',
+  default: (id: string) => ({ id, value: '' })
 });
 
-export const inputTagsIdsState = atom<number[]>({
+export const inputTagsIdsState = atom<string[]>({
   key: 'inputTagsIdsState',
   default: []
 });
 
-export const isFilterPanelOpenState = atom({
-  key: 'isFilterPanelOpenState',
-  default: false
+export const inputTagsValuesState = atom<string[]>({
+  key: 'inputTagsValuesState',
+  default: []
 });
