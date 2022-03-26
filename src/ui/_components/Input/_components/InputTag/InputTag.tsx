@@ -1,16 +1,19 @@
-import { CloseIcon } from 'assets/icons';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { Button } from 'ui/_components/Button';
-import { inputTagsState } from 'ui/_tools/Stores/SearchStore';
+import { useRecoilState } from 'recoil';
+
 import { Styles } from './InputTag.styles';
 
-type InputTagProps = {
-  id: number;
-  onRemoveTag: (id: number) => void;
-};
+import { CloseIcon } from 'assets/icons';
 
-export const InputTag = ({ id, onRemoveTag }: InputTagProps) => {
-  const [tag, setTag] = useRecoilState(inputTagsState(id));
+import { inputTagState } from 'ui/_tools/Stores/SearchStore';
+
+import { useInputTags } from 'ui/_tools/Hooks/useInputTags';
+
+import type { InputTagProps } from './@types/InputTag.types';
+
+export const InputTag = ({ id }: InputTagProps) => {
+  const [tag, setTag] = useRecoilState(inputTagState(id));
+
+  const { removeTag } = useInputTags();
 
   return (
     <Styles.TagWrapper>
@@ -24,7 +27,7 @@ export const InputTag = ({ id, onRemoveTag }: InputTagProps) => {
         size={tag.value.length}
         value={tag.value}
       />
-      <CloseIcon onClick={() => onRemoveTag(id)} />
+      <CloseIcon onClick={() => removeTag(id)} />
     </Styles.TagWrapper>
   );
 };

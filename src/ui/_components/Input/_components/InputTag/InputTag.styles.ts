@@ -12,6 +12,10 @@ const TagWrapper = styled(Row)`
   &:hover {
     opacity: 1;
   }
+
+  & svg {
+    cursor: pointer;
+  }
 `;
 
 const Tag = styled('input')`

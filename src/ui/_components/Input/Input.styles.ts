@@ -4,6 +4,7 @@ const Input = styled('input')`
   border: none;
   outline: none;
   padding: 0.5rem;
+  width: fit-content;
 `;
 
 const InputWrapper = styled('div')`
@@ -16,6 +17,10 @@ const InputWrapper = styled('div')`
   padding: 0.5rem;
   position: relative;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    order: 2;
+  }
 `;
 
 export const Styles = { Input, InputWrapper };

@@ -1,41 +1,45 @@
-import { useRecoilCallback, useRecoilValue } from 'recoil';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 import { Styles } from './Input.styles';
 
 import { InputTag } from './_components/InputTag';
 
-import { inputTagsIdsState, inputTagsState } from 'ui/_tools/Stores/SearchStore';
+import { inputTagsIdsState } from 'ui/_tools/Stores/SearchStore';
 
-import type { InputProps } from './@types/Input.types';
+import { useInputTags } from 'ui/_tools/Hooks/useInputTags';
 
-export const Input = ({ onChange, onKeyDown, placeholder, value }: InputProps) => {
+import type { ChangeEvent } from 'react';
+
+export const Input = () => {
+  const navigate = useNavigate();
   const tagIds = useRecoilValue(inputTagsIdsState);
 
-  const createTag = useRecoilCallback(
-    ({ set }) =>
-      (id: number, value: string) => {
-        set(inputTagsIdsState, currVal => [...currVal, id]);
-        set(inputTagsState(id), { id, value, isEditing: false });
-      },
-    []
-  );
+  const { createTag } = useInputTags();
 
-  const removeTag = useRecoilCallback(({ set }) => (id: number) => {
-    set(inputTagsIdsState, currVal => currVal.filter(currId => currId !== id));
-  });
+  const [value, setValue] = useState('');
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
 
   const onCreateTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') createTag(tagIds.length, value);
+    if (event.key === 'Enter' && value !== '') createTag(value);
 
-    onKeyDown(event);
+    if (event.key === 'Enter' && value !== '') {
+      if (event.ctrlKey) navigate('search');
+
+      setValue('');
+    }
   };
 
   return (
     <Styles.InputWrapper>
-      {tagIds.map((tagId: number) => (
-        <InputTag id={tagId} key={tagId} onRemoveTag={removeTag} />
+      {tagIds.map((tagId: string) => (
+        <InputTag id={tagId} key={tagId} />
       ))}
-      <Styles.Input onChange={onChange} onKeyDown={onCreateTag} placeholder={placeholder} value={value} />
+      <Styles.Input onChange={onChange} onKeyDown={onCreateTag} placeholder="Introduce un texto" value={value} />
     </Styles.InputWrapper>
   );
 };

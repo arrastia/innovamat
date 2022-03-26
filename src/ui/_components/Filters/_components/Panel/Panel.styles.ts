@@ -14,9 +14,10 @@ const Panel = styled('div')<{ isVisible: boolean }>`
   transition-duration: 300ms;
   transition-property: transform, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
+  width: max-content;
   will-change: transform, opacity;
   z-index: 1;
+  right: 0;
 `;
 
 export const Styles = { Panel };

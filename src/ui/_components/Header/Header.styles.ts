@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { Row } from 'ui/_styles/components/Row';
 
 const SearchWrapper = styled(Row)`
+  /* gap: 0; */
+  /* position: relative; */
+  background: white;
   gap: 0;
-  position: relative;
   width: 100%;
 `;
 
