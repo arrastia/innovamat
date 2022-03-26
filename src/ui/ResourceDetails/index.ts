@@ -1,1 +1,1 @@
-export { ResourceDetails } from './ResourceDetails';
+export { ResourceDetails as default } from './ResourceDetails';

@@ -13,7 +13,15 @@ const Title = styled('h2')`
 `;
 
 const CardSection = styled('div')`
-  display: grid;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 1rem 0;
+  width: 100%;
+
+  /* display: grid;
   grid-template-columns: 1fr;
 
   @media (min-width: 420px) {
@@ -31,7 +39,7 @@ const CardSection = styled('div')`
   }
   @media (min-width: 1600px) {
     grid-gap: 1.4rem;
-  }
+  } */
 `;
 
 export const Styles = { ResourcesStyles, Title, CardSection };

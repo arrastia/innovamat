@@ -4,51 +4,61 @@ import { useRecoilValue } from 'recoil';
 import { Styles } from './Resources.styles';
 
 import { Card } from 'ui/_components/Card';
+import { MySkeleton } from 'ui/_components/MySkeleton';
 
 import { resourcesState } from 'ui/_tools/Stores/ResourcesStore';
 
 import { NavigationUtils } from 'ui/_tools/Utils/NavigationUtils';
 
 import type { ResourceTagType } from 'core/entities/Resource';
+import { useLocale } from 'ui/_tools/Hooks/useLocale';
+import { Suspense, useState } from 'react';
 
 const { parseURL } = NavigationUtils;
 
 export const Resources = () => {
   const navigate = useNavigate();
+
   const { tag } = useParams();
+
+  const messages = useLocale();
 
   const resources = useRecoilValue(resourcesState(tag as ResourceTagType));
 
+  const [isLiked, setIsLiked] = useState(false);
+
   const renderSection = (sectionName: string, resources: any[]) => {
     return (
-      <div key={sectionName}>
+      <section key={sectionName}>
         <h3>{sectionName}</h3>
-        <hr style={{ borderColor: '#C5D6D5', borderStyle: '1px' }} />
+        <hr style={{ border: '0', borderTop: '1px solid #C5D6D5', height: '2px' }} />
 
-        {resources.map(resource => {
-          return (
-            <Styles.CardSection key={`${resource.id}_${sectionName}`}>
+        <Styles.CardSection>
+          {resources.map(resource => {
+            return (
               <Card
                 description={resource.description}
                 id={`${resource.id}_${sectionName}`}
                 image={resource.image}
-                isLiked={false}
+                isLiked={true}
+                key={`${resource.id}_${sectionName}`}
                 onCardClick={() => navigate(parseURL({ url: ':resourceId', params: { resourceId: resource.id } }))}
                 title={resource.title}
                 toggleLike={function (): void {
                   throw new Error('Function not implemented.');
                 }}
               />
-            </Styles.CardSection>
-          );
-        })}
-      </div>
+            );
+          })}
+        </Styles.CardSection>
+      </section>
     );
   };
 
   return (
     <Styles.ResourcesStyles>
-      <Styles.Title>{tag}</Styles.Title>
+      <Styles.Title>{messages['talleres']}</Styles.Title>
+      {/* <MySkeleton count={10} /> */}
       {resources.map(resource => renderSection(resource.sectionName, resource.resources))}
     </Styles.ResourcesStyles>
   );
