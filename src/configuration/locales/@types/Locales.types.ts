@@ -1,13 +1,11 @@
-import type { MessageSections, NotFoundMessages } from './Messages.types';
+import type { MessageSections, Messages } from './Messages.types';
 
 export type SupportedLanguages = 'es';
 
 export type SingleLanguageMessages = {
   [Language in SupportedLanguages]: {
     [key in Language]: {
-      [Section in MessageSections]: {
-        [key in NotFoundMessages]: string;
-      };
+      [Section in Messages]: string;
     };
   };
 }[SupportedLanguages];
@@ -15,7 +13,7 @@ export type SingleLanguageMessages = {
 export type LanguagesMessages = {
   [Language in SupportedLanguages]: {
     [Section in MessageSections]: {
-      [key in NotFoundMessages]: string;
+      [key in Messages]: string;
     };
   };
 };

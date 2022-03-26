@@ -1,7 +1,11 @@
 export type MessageSections = 'NOT_FOUND';
 
-export enum NotFoundMessages {
-  notFoundTitle = 'notFoundTitle',
+export enum Messages {
+  ambientes = 'ambientes',
+  notFoundButton = 'notFoundButton',
   notFoundText = 'notFoundText',
-  notFoundButton = 'notFoundButton'
+  notFoundTitle = 'notFoundTitle',
+  rincones = 'rincones',
+  rutinas = 'rutinas',
+  talleres = 'talleres'
 }
