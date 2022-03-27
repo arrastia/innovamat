@@ -13,6 +13,7 @@ import { NavigationUtils } from 'ui/_tools/Utils/NavigationUtils';
 import type { ResourceTagType } from 'core/entities/Resource';
 import { useLocale } from 'ui/_tools/Hooks/useLocale';
 import { Suspense, useState } from 'react';
+import { useMedia } from 'ui/_tools/Hooks/useMedia';
 
 const { parseURL } = NavigationUtils;
 

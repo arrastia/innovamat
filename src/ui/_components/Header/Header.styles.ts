@@ -6,8 +6,14 @@ const SearchWrapper = styled(Row)`
   /* gap: 0; */
   /* position: relative; */
   background: white;
+  border-radius: 10px;
   gap: 0;
   width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    background: transparent;
+    gap: 14px;
+  }
 `;
 
 const Header = styled('header')`

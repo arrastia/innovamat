@@ -12,5 +12,8 @@ declare module 'styled-components' {
       transparent: string;
       white: string;
     };
+    breakpoints: {
+      medium: string;
+    };
   }
 }

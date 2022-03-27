@@ -7,6 +7,7 @@ const Button = styled(ButtonStyles)`
 
   &.primary {
     background: ${({ theme }) => theme.colors.primary};
+    color: white;
   }
   &.secondary {
     background-color: ${({ theme }) => theme.colors.secondary};
@@ -31,6 +32,12 @@ const Button = styled(ButtonStyles)`
   &.large {
     height: 40px;
     width: 256px;
+    justify-content: center;
+    gap: 0.5rem;
+
+    span {
+      font-size: large;
+    }
   }
   &.medium {
     height: 24px;

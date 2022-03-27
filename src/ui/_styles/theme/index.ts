@@ -8,5 +8,8 @@ export const theme = {
     secondary: '#F5F5F5',
     transparent: 'transparent',
     white: '#FFFFFF'
+  },
+  breakpoints: {
+    medium: '768px'
   }
 };
