@@ -14,9 +14,9 @@ export const Accordion: FC<IAccordion> = ({ children, title }) => {
   const toggleVisibility = () => setIsVisible(prevState => !prevState);
 
   return (
-    <Styles.Accordion>
-      <Styles.AccordionTitle>
-        <h3>{title}</h3>
+    <Styles.Accordion isVisible={isVisible}>
+      <Styles.AccordionTitle isVisible={isVisible}>
+        <h4>{title}</h4>
         <Button icon={<ArrowIcon isActive={isVisible} />} onClick={toggleVisibility} type="transparent" />
       </Styles.AccordionTitle>
       <Styles.AccordionContent isVisible={isVisible}>{children}</Styles.AccordionContent>

@@ -2,7 +2,7 @@ import { Styles } from './Button.styles';
 
 import type { IButton } from './@types/Button.types';
 
-export const Button = ({ className, icon, iconSize, isDisabled, isLoading, label, onClick, style, type, ...rest }: IButton) => {
+export const Button = ({ className, icon, iconSize, isDisabled, isLoading, label, onClick, style, type, size, ...rest }: IButton) => {
   const onButtonClick = () => {
     if (isDisabled || isLoading || !onClick) return;
 
@@ -14,7 +14,7 @@ export const Button = ({ className, icon, iconSize, isDisabled, isLoading, label
   const renderLabel = () => (label ? <Styles.Text>{label}</Styles.Text> : null);
 
   return (
-    <Styles.Button className={`${className} ${type} ${isDisabled ? 'disabled' : ''}`} onClick={onButtonClick} style={style} {...rest}>
+    <Styles.Button className={`${className} ${size} ${type} ${isDisabled ? 'disabled' : ''}`} onClick={onButtonClick} style={style} {...rest}>
       {renderIcon()}
       {renderLabel()}
     </Styles.Button>

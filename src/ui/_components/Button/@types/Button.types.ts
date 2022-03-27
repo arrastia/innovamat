@@ -1,6 +1,8 @@
 import type { CSSProperties, MouseEvent, ReactElement } from 'react';
 
-export type ButtonType = 'delete' | 'primary' | 'secondary' | 'transparent';
+export type ButtonType = 'delete' | 'primary' | 'secondary' | 'transparent' | 'selected' | 'unselected';
+
+export type ButtonSize = 'large' | 'medium';
 
 export interface IButton {
   className?: string;
@@ -11,6 +13,7 @@ export interface IButton {
   label?: string;
   onClick?: () => void;
   onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => void;
+  size?: ButtonSize;
   style?: CSSProperties;
   type?: ButtonType;
 }

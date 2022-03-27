@@ -46,6 +46,18 @@ export const GlobalStyles = createGlobalStyle`
         text-align: left;
     }
 
+    h4 {
+        //styleName: Small Text Bold (14);
+        /* font-family: Roboto; */
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
     p {
         line-height: 22px;
         margin: 0 0 25px 0;

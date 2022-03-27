@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import { Button as ButtonStyles } from 'ui/_styles/components/Button';
 
 const Button = styled(ButtonStyles)`
-  border-radius: 10px;
   padding: 0.5rem;
-  /* color: ${({ theme }) => theme.colors.white};
-  height: 40px;
-  width: 256px; */
 
   &.primary {
     background: ${({ theme }) => theme.colors.primary};
@@ -21,9 +17,24 @@ const Button = styled(ButtonStyles)`
   &.transparent {
     background-color: ${({ theme }) => theme.colors.transparent};
   }
+  &.selected {
+    background-color: ${({ theme }) => theme.colors.darkGrey};
+  }
+  &.unselected {
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+  }
   &.disabled {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  &.large {
+    height: 40px;
+    width: 256px;
+  }
+  &.medium {
+    height: 24px;
+    width: 100px;
   }
 `;
 
@@ -42,6 +53,7 @@ const Icon = styled('span')<{ iconSize?: number }>`
 const Text = styled('span')`
   font-size: large;
   line-height: normal;
+  font-size: 12px;
 `;
 
 export const Styles = { Button, Icon, Text };
