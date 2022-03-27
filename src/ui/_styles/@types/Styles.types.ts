@@ -13,7 +13,10 @@ declare module 'styled-components' {
       white: string;
     };
     breakpoints: {
-      medium: string;
+      phone: string;
+      tablet: string;
+      small_desktop: string;
+      large_desktop: string;
     };
   }
 }

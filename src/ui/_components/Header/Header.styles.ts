@@ -10,7 +10,7 @@ const SearchWrapper = styled(Row)`
   gap: 0;
   width: 100%;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
     background: transparent;
     gap: 14px;
   }
