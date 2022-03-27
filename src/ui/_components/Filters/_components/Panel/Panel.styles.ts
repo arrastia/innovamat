@@ -21,6 +21,10 @@ const Panel = styled('div')<{ isVisible: boolean }>`
   z-index: 1;
   right: 0;
   max-width: 240px;
+
+  @media (min-width: 768px) {
+    left: 0;
+  }
 `;
 
 export const Styles = { Panel };

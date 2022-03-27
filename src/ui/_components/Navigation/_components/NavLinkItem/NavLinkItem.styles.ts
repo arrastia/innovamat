@@ -19,6 +19,11 @@ const NavLinkItem = styled(NavLink)`
   &.isActive {
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
 `;
 
 const NavLinkItemLabel = styled('label')<{ isActive: boolean }>`

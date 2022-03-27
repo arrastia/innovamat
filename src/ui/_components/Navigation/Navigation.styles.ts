@@ -14,15 +14,20 @@ const Navigation = styled('nav')`
   z-index: 1;
 
   @media (min-width: 768px) {
-    border-right-color: ${({ theme }) => theme.colors.primary};
     border-right: 1px solid;
-    flex-basis: 20%;
+    border-right-color: ${({ theme }) => theme.colors.lightGrey};
+    flex-basis: 30%;
     flex-shrink: 0;
     max-width: 272px;
 
     overflow: auto;
     padding: 1.5rem;
+    padding-left: 2.5rem;
     position: relative;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    z-index: 0;
   }
 `;
 
@@ -34,6 +39,32 @@ const Menu = styled('ul')`
   /* max-width: 18.5rem; */
   padding: 1rem 2rem;
   width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    justify-content: start;
+    gap: 1.25rem;
+    padding: 1rem 0;
+  }
 `;
 
-export const Styles = { Menu, Navigation };
+const NavigtaionTitle = styled('h3')`
+  display: none;
+
+  @media (min-width: 768px) {
+    border-bottom: 1px solid;
+    border-bottom-color: ${({ theme }) => theme.colors.lightGrey};
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    margin: 0px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+export const Styles = { Menu, Navigation, NavigtaionTitle };

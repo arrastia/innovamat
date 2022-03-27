@@ -9,10 +9,13 @@ const Card = styled('div')`
   background: #ffffff;
   border-radius: 5px;
   cursor: pointer;
-  justify-content: center;
+  /* justify-content: center; */
   padding: 0.75rem;
   transition: all 100ms ease-in;
-  width: 300px;
+
+  /* @media (min-width: 420px) {
+    width: 300px;
+  } */
 
   &:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);

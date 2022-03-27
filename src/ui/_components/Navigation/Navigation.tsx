@@ -26,6 +26,7 @@ const menuItems: Item[] = [
 
 export const Navigation = () => (
   <Styles.Navigation>
+    <Styles.NavigtaionTitle>Dinámicas</Styles.NavigtaionTitle>
     <Styles.Menu>
       {menuItems.map(menuItem => (
         <NavLinkItem key={menuItem.label} {...menuItem} />
