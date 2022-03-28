@@ -6,6 +6,7 @@ declare module 'styled-components' {
       black: string;
       darkGrey: string;
       error: string;
+      grey: string;
       lightGrey: string;
       primary: string;
       secondary: string;
@@ -13,10 +14,10 @@ declare module 'styled-components' {
       white: string;
     };
     breakpoints: {
-      phone: string;
-      tablet: string;
-      small_desktop: string;
       large_desktop: string;
+      phone: string;
+      small_desktop: string;
+      tablet: string;
     };
   }
 }

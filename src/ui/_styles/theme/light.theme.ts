@@ -4,6 +4,7 @@ export const light = {
     darkGrey: '#A3B7B5',
     error: '#FF0000',
     lightGrey: '#DDEAEA',
+    grey: '#ededed',
     primary: '#18C6AC',
     secondary: '#F5F5F5',
     transparent: 'transparent',
