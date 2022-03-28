@@ -1,1 +1,1 @@
-export { routes, routeTags } from './routes';
+export { routes } from './routes';

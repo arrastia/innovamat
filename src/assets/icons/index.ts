@@ -1,4 +1,4 @@
-import heart from './image.svg';
+import heart from './heart.svg';
 
 export { heart };
 export { AmbientesIcon } from './Ambientes.icon';
@@ -9,4 +9,3 @@ export { RutinasIcon } from './Rutinas.icon';
 export { SearchIcon } from './Search.icon';
 export { SettingsIcon } from './Settings.icon';
 export { TalleresIcon } from './Talleres.icon';
-export { LikeIcon } from './Like.icon';

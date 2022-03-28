@@ -1,12 +1,10 @@
-import type { ResourceTagType } from 'core/entities/Resource';
-
 export type Routes = {
   HOME: string;
+  MAIN: string;
   NOT_FOUND: string;
   RESOURCE_DETAILS: string;
   RESOURCES_BY_TAG: string;
-};
-
-export type RouteTags = {
-  [tag in ResourceTagType]: `/${tag}`;
+  RESOURCES_MAIN: string;
+  RESOURCES: string;
+  SEARCH: string;
 };

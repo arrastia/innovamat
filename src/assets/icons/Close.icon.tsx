@@ -1,4 +1,4 @@
-import { Icon } from './@types/Icon.types';
+import type { Icon } from './@types/Icon.types';
 
 export const CloseIcon = ({ color, onClick }: Icon) => {
   return (
@@ -7,7 +7,7 @@ export const CloseIcon = ({ color, onClick }: Icon) => {
       height="1em"
       onClick={onClick}
       stroke={color ? color : 'currentColor'}
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 512 512"
       width="1em"
       xmlns="http://www.w3.org/2000/svg">

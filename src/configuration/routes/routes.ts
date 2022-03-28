@@ -1,15 +1,12 @@
-import type { Routes, RouteTags } from './@types/Routes.types';
+import type { Routes } from './@types/Routes.types';
 
 export const routes: Routes = {
   HOME: '/',
   NOT_FOUND: '*',
-  RESOURCE_DETAILS: ':tag/:id',
-  RESOURCES_BY_TAG: ':tag'
-};
-
-export const routeTags: RouteTags = {
-  ambientes: '/ambientes',
-  rincones: '/rincones',
-  rutinas: '/rutinas',
-  talleres: '/talleres'
+  MAIN: '/recursos/talleres',
+  RESOURCES: '/recursos',
+  RESOURCES_MAIN: 'talleres',
+  RESOURCE_DETAILS: ':tag/:resourceId',
+  RESOURCES_BY_TAG: ':tag',
+  SEARCH: 'search'
 };

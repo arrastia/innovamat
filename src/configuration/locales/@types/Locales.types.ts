@@ -1,19 +1,11 @@
-import type { MessageSections, Messages } from './Messages.types';
+import type { Messages } from './Messages.types';
 
 export type SupportedLanguages = 'es';
 
-export type SingleLanguageMessages = {
+export type LanguageMessages = {
   [Language in SupportedLanguages]: {
     [key in Language]: {
-      [Section in Messages]: string;
+      [Message in Messages]: string;
     };
   };
 }[SupportedLanguages];
-
-export type LanguagesMessages = {
-  [Language in SupportedLanguages]: {
-    [Section in MessageSections]: {
-      [key in Messages]: string;
-    };
-  };
-};

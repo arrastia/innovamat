@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import errorBoundaryImage from './errorBoundaryImage.png';
 import notFound from './404.png';
 
-export { logo, notFound };
+export { errorBoundaryImage, notFound };
