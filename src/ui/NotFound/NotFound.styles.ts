@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
+import { Image } from 'ui/_styles/components/Image';
+
 const NotFoundWrapper = styled('div')`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+    padding: 1rem 3rem;
+  }
 `;
 
 const TextWrapper = styled('div')`
@@ -14,15 +24,9 @@ const TextWrapper = styled('div')`
   gap: 0.5rem;
 `;
 
-const ImageWrapper = styled('div')`
-  width: 45%;
-
-  width: 100%;
-`;
-
-const Image = styled('img')`
-  max-width: 100%;
+const NotFoundImage = styled(Image)`
   height: auto;
+  max-width: 100%;
 `;
 
-export const Styles = { Image, ImageWrapper, NotFoundWrapper, TextWrapper };
+export const Styles = { NotFoundImage, NotFoundWrapper, TextWrapper };

@@ -1,15 +1,20 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import { resourceState } from 'ui/_tools/Stores/ResourcesStore';
+import { Styles } from './ResourceDetails.styles';
 
-type Props = {};
-
-export const ResourceDetails = (props: Props) => {
+export const ResourceDetails = () => {
   const { resourceId } = useParams();
 
-  const value = useRecoilValue(resourceState(resourceId as string));
+  const resource = useRecoilValue(resourceState(resourceId as string));
 
-  return <div dangerouslySetInnerHTML={{ __html: value.description }} />;
+  return (
+    <Styles.View>
+      <Styles.Title>{resource.title}</Styles.Title>
+      <p dangerouslySetInnerHTML={{ __html: resource.description }} />
+
+      {resource.file && <embed height="100%" src={resource.file} type="application/pdf" width="100%" />}
+    </Styles.View>
+  );
 };
