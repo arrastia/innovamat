@@ -1,7 +1,10 @@
-import { IResource, Resource } from 'core/entities/Resource';
+import { Resource } from 'core/entities/Resource';
+
 import { ResourcesRepository } from 'core/repositories/Resources';
 
-export const searchResourcesByKeyword = async (keyword: string): Promise<IResource[]> => {
+import type { IResource } from 'core/entities/Resource';
+
+export const searchResourcesByKeyword = async (keyword: string | string[]): Promise<IResource[]> => {
   const response = await ResourcesRepository.searchResourcesByKeyword(keyword);
 
   return response.map(resource => new Resource(resource));
