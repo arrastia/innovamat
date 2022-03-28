@@ -1,16 +1,19 @@
-import { atom, atomFamily } from 'recoil';
+import { atom } from 'recoil';
 
-export const isDarkModeState = atom({
-  key: 'isDarkModeState',
-  default: false
-});
-
-export const likedResourcesState = atom({
+export const likedResourcesState = atom<string[]>({
   key: 'likedResourcesState',
-  default: []
-});
+  default: [],
+  effects: [
+    ({ onSet, setSelf }) => {
+      const savedValue = localStorage.getItem('innovamat-favorite-ids');
 
-export const likedCardState = atomFamily({
-  key: 'likedCardState',
-  default: (id: string) => ({ id, isLiked: false })
+      if (savedValue) {
+        setSelf(JSON.parse(savedValue));
+      }
+
+      onSet(newValue => {
+        localStorage.setItem('innovamat-favorite-ids', JSON.stringify(newValue));
+      });
+    }
+  ]
 });

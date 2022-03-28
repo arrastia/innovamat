@@ -1,21 +1,23 @@
 import { useRecoilCallback } from 'recoil';
 
-import { inputTagsIdsState, inputTagState } from '../Stores/SearchStore';
+import { tagsState, tagsValuesState } from 'ui/_tools/Stores/SearchStore';
 
 export const useInputTags = () => {
   const createTag = useRecoilCallback(
     ({ set }) =>
       (value: string) => {
-        const id = `${new Date().getTime()}`;
+        set(tagsValuesState, prevState => {
+          if (prevState.includes(value)) return prevState;
 
-        set(inputTagsIdsState, currVal => [...currVal, id]);
-        set(inputTagState(id), { id, value });
+          return [...prevState, value];
+        });
+        set(tagsState(value), value);
       },
     []
   );
 
   const removeTag = useRecoilCallback(({ set }) => (id: string) => {
-    set(inputTagsIdsState, currVal => currVal.filter(currId => currId !== id));
+    set(tagsValuesState, prevState => prevState.filter(currId => currId !== id));
   });
 
   return { createTag, removeTag };

@@ -1,7 +1,6 @@
-import { MessageSections } from 'configuration/locales/@types/Messages.types';
 import { useRecoilValue } from 'recoil';
 
-import { messagesState, selectedLanguageState } from '../Stores/LocaleStore';
+import { messagesState, selectedLanguageState } from 'ui/_tools/Stores/LocaleStore';
 
 export const useLocale = () => {
   const messages = useRecoilValue(messagesState);

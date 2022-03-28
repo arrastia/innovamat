@@ -1,21 +1,11 @@
 import { atom, atomFamily } from 'recoil';
 
-interface ITag {
-  id: string;
-  value: string;
-}
-
-export const inputTagState = atomFamily<ITag, string>({
-  key: 'inputTagState',
-  default: (id: string) => ({ id, value: '' })
+export const tagsState = atomFamily({
+  key: 'tagsState',
+  default: () => ''
 });
 
-export const inputTagsIdsState = atom<string[]>({
-  key: 'inputTagsIdsState',
-  default: []
-});
-
-export const inputTagsValuesState = atom<string[]>({
-  key: 'inputTagsValuesState',
+export const tagsValuesState = atom<string[]>({
+  key: 'tagsValuesState',
   default: []
 });
