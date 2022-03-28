@@ -1,13 +1,10 @@
-import { Styles } from './NavLinkItem.styles';
-
-import { RinconesIcon, TalleresIcon } from 'assets/icons';
 import { Fragment } from 'react';
 
-type Props = {
-  icon: keyof typeof icons;
-  label: string;
-  route: string;
-};
+import { Styles } from './NavbarItem.styles';
+
+import { RinconesIcon, TalleresIcon } from 'assets/icons';
+
+import type { NavbarItemProps } from 'ui/_components/Navbar/@types/Navbar.types';
 
 const icons = {
   ambientes: TalleresIcon,
@@ -16,19 +13,19 @@ const icons = {
   talleres: TalleresIcon
 };
 
-export const NavLinkItem = ({ icon, label, route }: Props) => {
+export const NavbarItem = ({ icon, label, route }: NavbarItemProps) => {
   const IconComponent = icons[icon];
 
   return (
     <li key={label}>
-      <Styles.NavLinkItem className={({ isActive }) => (isActive ? 'isActive' : undefined)} key={route} to={route}>
+      <Styles.NavbarItem className={({ isActive }) => (isActive ? 'isActive' : undefined)} key={route} to={route}>
         {({ isActive }) => (
           <Fragment>
             <IconComponent isActive={isActive} />
             <Styles.NavLinkItemLabel isActive={isActive}> {label}</Styles.NavLinkItemLabel>
           </Fragment>
         )}
-      </Styles.NavLinkItem>
+      </Styles.NavbarItem>
     </li>
   );
 };

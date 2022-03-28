@@ -1,38 +1,34 @@
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { Styles } from './LikeButton.styles';
 
-import { likedCardState } from 'ui/_tools/Stores/UserStore';
+import { likedResourcesState } from 'ui/_tools/Stores/UserStore';
 
-import { useLocalStorage } from 'ui/_tools/Hooks/useLocalStorage';
-import { useState } from 'react';
+import type { MouseEvent } from 'react';
+import type { LikeButtonProps } from './@types/LikeButton.types';
 
-type Props = {
-  id: string;
-};
+export const LikeButton = ({ id }: LikeButtonProps) => {
+  const [favoriteIds, setFavoriteIds] = useRecoilState(likedResourcesState);
 
-export const LikeButton = (props: Props) => {
-  const [favoriteIds, setFavoriteIds] = useLocalStorage<string[]>('innovamat-favorite-ids', []);
+  const [isLiked, setIsLiked] = useState(favoriteIds.includes(id));
 
-  const [isLiked, setIsLiked] = useState(favoriteIds.includes(props.id));
+  const toggleLike = (event: MouseEvent, isLiked: boolean) => {
+    event.stopPropagation();
 
-  const toggleLike = () => {
-    setIsLiked(prevState => {
-      return !prevState;
-    });
+    setIsLiked(!isLiked);
+    setFavoriteIds(prevState => (isLiked ? prevState.filter(likedId => likedId !== id) : [...prevState, id]));
   };
 
   return (
-    <Styles.LikeButtonWrapper className="middle-wrapper" isLiked={isLiked} onClick={toggleLike}>
-      <div className="like-wrapper">
-        <button className={`${isLiked ? 'liked' : ''} like-button`}>
-          <span className="like-icon">
-            <div className="heart-animation-1"></div>
-            <div className="heart-animation-2"></div>
-          </span>
-          Favorite
-        </button>
-      </div>
+    <Styles.LikeButtonWrapper isLiked={isLiked} onClick={event => toggleLike(event, isLiked)}>
+      <Styles.LikeButton className={`${isLiked ? 'liked' : ''}`}>
+        <Styles.LikeIcon>
+          <div className="heart-animation-1" />
+          <div className="heart-animation-2" />
+        </Styles.LikeIcon>
+        Favorite
+      </Styles.LikeButton>
     </Styles.LikeButtonWrapper>
   );
 };

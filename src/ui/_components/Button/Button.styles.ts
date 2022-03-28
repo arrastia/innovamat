@@ -1,28 +1,28 @@
 import styled from 'styled-components';
 
-import { Button as ButtonStyles } from 'ui/_styles/components/Button';
+import { Button } from 'ui/_styles/components/Button';
 
-const Button = styled(ButtonStyles)`
+const ButtonWrapper = styled(Button)`
   padding: 0.5rem;
 
   &.primary {
-    background: ${({ theme }) => theme.colors.primary};
-    color: white;
+    background: ${({ theme: { colors } }) => colors.primary};
+    color: ${({ theme: { colors } }) => colors.white};
   }
   &.secondary {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme: { colors } }) => colors.secondary};
   }
   &.delete {
-    background-color: ${({ theme }) => theme.colors.error};
+    background-color: ${({ theme: { colors } }) => colors.error};
   }
   &.transparent {
-    background-color: ${({ theme }) => theme.colors.transparent};
+    background-color: ${({ theme: { colors } }) => colors.transparent};
   }
   &.selected {
-    background-color: ${({ theme }) => theme.colors.darkGrey};
+    background-color: ${({ theme: { colors } }) => colors.darkGrey};
   }
   &.unselected {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme: { colors } }) => colors.lightGrey};
   }
   &.disabled {
     opacity: 0.5;
@@ -30,10 +30,12 @@ const Button = styled(ButtonStyles)`
   }
 
   &.large {
-    height: 40px;
-    width: 256px;
-    justify-content: center;
     gap: 0.5rem;
+    justify-content: center;
+    max-height: 40px;
+    border: 1px solid;
+    border-color: ${({ theme: { colors } }) => colors.primary};
+    width: 256px;
 
     span {
       font-size: large;
@@ -45,16 +47,10 @@ const Button = styled(ButtonStyles)`
   }
 `;
 
-const Icon = styled('span')<{ iconSize?: number }>`
+const Icon = styled('span')`
   align-items: center;
   display: flex;
   font-size: x-large;
-
-  svg,
-  img {
-    height: ${({ iconSize }) => `${iconSize}rem` || '2rem'};
-    width: ${({ iconSize }) => `${iconSize}rem` || '2rem'};
-  }
 `;
 
 const Text = styled('span')`
@@ -63,4 +59,4 @@ const Text = styled('span')`
   font-size: 12px;
 `;
 
-export const Styles = { Button, Icon, Text };
+export const Styles = { ButtonWrapper, Icon, Text };

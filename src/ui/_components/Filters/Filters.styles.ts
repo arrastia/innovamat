@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 const Filters = styled('div')`
+  background: white;
   order: 3;
   position: relative;
-  background: white;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${({ theme: { breakpoints } }) => breakpoints.tablet}) {
+    display: flex;
+    flex-grow: 1;
+    gap: 0;
     order: 1;
   }
 `;

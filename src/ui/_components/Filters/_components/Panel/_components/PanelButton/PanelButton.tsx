@@ -4,13 +4,9 @@ import { Button } from 'ui/_components/Button';
 
 import { useInputTags } from 'ui/_tools/Hooks/useInputTags';
 
-import type { IButton } from 'ui/_components/Button/@types/Button.types';
+import type { PanelButtonProps } from './@types/PanelButton.types';
 
-interface PanelButtonProps extends IButton {
-  id: string;
-}
-
-export const PanelButton = ({ className, id, label, size }: PanelButtonProps) => {
+export const PanelButton = ({ id, label, size }: PanelButtonProps) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const { createTag, removeTag } = useInputTags();
@@ -25,5 +21,5 @@ export const PanelButton = ({ className, id, label, size }: PanelButtonProps) =>
     }
   };
 
-  return <Button size={size} label={label} onClick={onCreateTag} type={isSelected ? 'selected' : 'unselected'} />;
+  return <Button label={label} onClick={onCreateTag} size={size} type={isSelected ? 'selected' : 'unselected'} />;
 };

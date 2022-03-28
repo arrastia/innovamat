@@ -6,20 +6,20 @@ import { ArrowIcon } from 'assets/icons';
 
 import { Button } from 'ui/_components/Button';
 
-import type { IAccordion } from './@types/Accordion.types';
+import type { AccordionProps } from './@types/Accordion.types';
 
-export const Accordion: FC<IAccordion> = ({ children, title }) => {
+export const Accordion: FC<AccordionProps> = ({ children, title }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => setIsVisible(prevState => !prevState);
 
   return (
     <Styles.Accordion isVisible={isVisible}>
-      <Styles.AccordionTitle isVisible={isVisible}>
+      <Styles.Title isVisible={isVisible}>
         <h4>{title}</h4>
-        <Button icon={<ArrowIcon isActive={isVisible} />} onClick={toggleVisibility} type="transparent" />
-      </Styles.AccordionTitle>
-      <Styles.AccordionContent isVisible={isVisible}>{children}</Styles.AccordionContent>
+        <Button icon={<ArrowIcon className="accordion-arrow-icon" isActive={isVisible} />} onClick={toggleVisibility} type="transparent" />
+      </Styles.Title>
+      <Styles.Content isVisible={isVisible}>{children}</Styles.Content>
     </Styles.Accordion>
   );
 };

@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
-import { resourceState } from 'ui/_tools/Stores/ResourcesStore';
 import { Styles } from './ResourceDetails.styles';
+
+import { resourceState } from 'ui/_tools/Stores/ResourcesStore';
 
 export const ResourceDetails = () => {
   const { resourceId } = useParams();

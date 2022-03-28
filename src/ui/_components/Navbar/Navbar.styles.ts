@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Navigation = styled('nav')`
+const Navbar = styled('nav')`
   background: white;
   border: none;
   bottom: 0;
@@ -13,58 +12,55 @@ const Navigation = styled('nav')`
   width: 100%;
   z-index: 1;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme: { breakpoints } }) => breakpoints.tablet}) {
     border-right: 1px solid;
     border-right-color: ${({ theme }) => theme.colors.lightGrey};
-    flex-basis: 30%;
+    box-shadow: none;
+    flex-direction: column;
     flex-shrink: 0;
-    max-width: 272px;
-
+    gap: 1rem;
+    height: 80%;
+    justify-content: start;
+    max-width: calc(16rem);
     overflow: auto;
     padding: 1.5rem;
     padding-left: 2.5rem;
     position: relative;
-    flex-direction: column;
-    justify-content: start;
-    gap: 1rem;
     z-index: 0;
   }
 `;
 
 const Menu = styled('ul')`
   display: flex;
-  justify-content: center;
   gap: 2rem;
+  justify-content: center;
   list-style: none;
-  /* max-width: 18.5rem; */
   padding: 1rem 2rem;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme: { breakpoints } }) => breakpoints.tablet}) {
     flex-direction: column;
-    justify-content: start;
     gap: 1.25rem;
+    justify-content: start;
     padding: 1rem 0;
   }
 `;
 
-const NavigtaionTitle = styled('h3')`
+const NavbarTitle = styled('h4')`
   display: none;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme: { breakpoints } }) => breakpoints.tablet}) {
     border-bottom: 1px solid;
-    border-bottom-color: ${({ theme }) => theme.colors.lightGrey};
+    border-bottom-color: ${({ theme: { colors } }) => colors.lightGrey};
     display: block;
-
     font-size: 14px;
     font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 0em;
-    margin: 0px;
-    margin-bottom: 0.6rem;
-    display: flex;
     justify-content: space-between;
+    letter-spacing: 0em;
+    line-height: 16px;
+    margin-bottom: 0.6rem;
+    margin: 0px;
   }
 `;
 
-export const Styles = { Menu, Navigation, NavigtaionTitle };
+export const Styles = { Menu, Navbar, NavbarTitle };

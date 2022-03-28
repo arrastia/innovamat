@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { Styles } from './Filters.styles';
 
-import { SettingsIcon } from 'assets/icons';
-
-import { Button } from 'ui/_components/Button';
+import { FiltersButton } from './_components/FiltersButton';
 import { Panel } from './_components/Panel';
 
 export const Filters = () => {
@@ -14,7 +12,7 @@ export const Filters = () => {
 
   return (
     <Styles.Filters>
-      <Button icon={<SettingsIcon />} onClick={toggleFiltersPanel} type="transparent" />
+      <FiltersButton isPanelVisible={isPanelVisible} onClick={toggleFiltersPanel} />
 
       <Panel isVisible={isPanelVisible} />
     </Styles.Filters>

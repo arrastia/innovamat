@@ -9,11 +9,14 @@ import { Filters } from 'ui/_components/Filters';
 import { Input } from 'ui/_components/Input';
 
 import { useBreakpoints } from 'ui/_tools/Hooks/useBreakpoints';
+import { useLocale } from 'ui/_tools/Hooks/useLocale';
 
 export const Header = () => {
   const navigate = useNavigate();
 
-  const { isPhone } = useBreakpoints();
+  const messages = useLocale();
+
+  const { isDesktop } = useBreakpoints();
 
   return (
     <Styles.Header>
@@ -21,12 +24,12 @@ export const Header = () => {
         <Filters />
         <Input />
         <Button
-          icon={<SearchIcon isActive={isPhone} />}
-          label={!isPhone ? 'Busqueda' : undefined}
+          icon={<SearchIcon isActive={!isDesktop} />}
+          label={isDesktop ? messages['search'] : undefined}
           onClick={() => navigate('search')}
-          size={!isPhone ? 'large' : undefined}
-          style={!isPhone ? { order: 3 } : { order: 2 }}
-          type={!isPhone ? 'primary' : 'transparent'}
+          size={isDesktop ? 'large' : undefined}
+          style={isDesktop ? { order: 3 } : { order: 2 }}
+          type={isDesktop ? 'primary' : 'transparent'}
         />
       </Styles.SearchWrapper>
     </Styles.Header>

@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 import { Row } from 'ui/_styles/components/Row';
 
-const Accordion = styled('div')<{ isVisible: boolean }>`
+import type { AccordionAnimationProps } from './@types/Accordion.types';
+
+const Accordion = styled('div')<AccordionAnimationProps>`
   margin-bottom: ${({ isVisible }) => (isVisible ? '29px' : '10px')};
-  transition-duration: 300ms;
-  transition-property: margin-bottom;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: margin-bottom 300ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
-const AccordionTitle = styled(Row)<{ isVisible: boolean }>`
+const Title = styled(Row)<AccordionAnimationProps>`
   border-bottom: ${({ isVisible }) => (isVisible ? 'none' : '1px solid')};
-  border-color: ${({ theme }) => theme.colors.lightGrey};
+  border-color: ${({ theme: { colors } }) => colors.lightGrey};
   justify-content: space-between;
   padding-bottom: 4px;
   margin-bottom: 8px;
@@ -19,9 +19,14 @@ const AccordionTitle = styled(Row)<{ isVisible: boolean }>`
   button {
     padding: 0;
   }
+
+  .accordion-arrow-icon {
+    transform: ${({ isVisible }) => (isVisible ? 'rotate(180deg)' : 'rotate(90deg)')};
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 `;
 
-const AccordionContent = styled(Row)<{ isVisible: boolean }>`
+const Content = styled(Row)<AccordionAnimationProps>`
   gap: 0.5rem;
   flex-wrap: wrap;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
@@ -29,11 +34,12 @@ const AccordionContent = styled(Row)<{ isVisible: boolean }>`
   transform-origin: 50% 0px;
   transform: ${({ isVisible }) => (isVisible ? 'translateY(0)' : 'rotateX(115deg) translateY(100%)')};
   transition-duration: 300ms;
-  transition-property: transform, opacity, max-height;
+  transition-property: transform, opacity, max-height, visibility;
   max-height: ${({ isVisible }) => (isVisible ? '100px' : 0)};
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
-  will-change: transform, opacity, max-height;
+  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
+  will-change: transform, opacity, max-height, visibility;
 `;
 
-export const Styles = { Accordion, AccordionTitle, AccordionContent };
+export const Styles = { Accordion, Content, Title };

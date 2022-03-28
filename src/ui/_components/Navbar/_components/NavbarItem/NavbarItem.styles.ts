@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 
-const NavLinkItem = styled(NavLink)`
+import type { NavbarItemAnimationProps } from './@types/NavbarItem.types';
+
+const NavbarItem = styled(NavLink)`
   align-items: center;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme: { colors } }) => colors.secondary};
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -17,17 +19,17 @@ const NavLinkItem = styled(NavLink)`
   }
 
   &.isActive {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme: { colors } }) => colors.primary};
   }
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme: { breakpoints } }) => breakpoints.tablet}) {
     flex-direction: row;
     gap: 1rem;
   }
 `;
 
-const NavLinkItemLabel = styled('label')<{ isActive: boolean }>`
-  color: ${({ theme, isActive }) => theme.colors[isActive ? 'primary' : 'darkGrey']};
+const NavLinkItemLabel = styled('span')<NavbarItemAnimationProps>`
+  color: ${({ isActive, theme: { colors } }) => colors[isActive ? 'primary' : 'darkGrey']};
   cursor: pointer;
   font-size: 14px;
   font-style: normal;
@@ -37,4 +39,4 @@ const NavLinkItemLabel = styled('label')<{ isActive: boolean }>`
   text-align: center;
 `;
 
-export const Styles = { NavLinkItem, NavLinkItemLabel };
+export const Styles = { NavbarItem, NavLinkItemLabel };

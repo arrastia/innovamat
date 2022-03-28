@@ -25,7 +25,7 @@ export class Fountain {
     this.sizes = [15, 20, 25, 35, 45];
     this.mouseX = 0;
     this.mouseY = 0;
-    this.variants = ['➖', '♾', '➕', '✖️', '➗', '🟰'];
+    this.variants = ['🧮', '📚', '👩🏼‍🏫', '🧑🏽‍🏫', '👨🏻‍🏫'];
     this.addHandlers();
     this.loop();
     this.rect = document?.getElementById(FOUNTAIN_ANIMATION_ID)?.getBoundingClientRect();

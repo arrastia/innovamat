@@ -1,23 +1,23 @@
 import { Styles } from './Button.styles';
 
-import type { IButton } from './@types/Button.types';
+import type { ButtonProps } from './@types/Button.types';
 
-export const Button = ({ className, icon, iconSize, isDisabled, isLoading, label, onClick, style, type, size, ...rest }: IButton) => {
+export const Button = ({ className, icon, isDisabled, label, onClick, style, type, size }: ButtonProps) => {
   const onButtonClick = () => {
-    if (isDisabled || isLoading || !onClick) return;
+    if (isDisabled || !onClick) return;
 
     onClick();
   };
 
-  const renderIcon = () => (icon ? <Styles.Icon iconSize={iconSize}>{icon}</Styles.Icon> : null);
+  const renderIcon = () => (icon ? <Styles.Icon>{icon}</Styles.Icon> : null);
 
   const renderLabel = () => (label ? <Styles.Text>{label}</Styles.Text> : null);
 
   return (
-    <Styles.Button className={`${className} ${size} ${type} ${isDisabled ? 'disabled' : ''}`} onClick={onButtonClick} style={style} {...rest}>
+    <Styles.ButtonWrapper className={`${className} ${size} ${type} ${isDisabled ? 'disabled' : ''}`} onClick={onButtonClick} style={style}>
       {renderIcon()}
       {renderLabel()}
-    </Styles.Button>
+    </Styles.ButtonWrapper>
   );
 };
 
