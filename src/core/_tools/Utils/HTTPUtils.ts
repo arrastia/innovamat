@@ -9,7 +9,7 @@ interface HTTPProps<D = any> {
   url: string;
 }
 
-const authAxios = axios.create({ baseURL: process.env.REACT_APP_BACKEND_API_URL });
+const authAxios = axios.create({ baseURL: 'https://api.mocklets.com/mock68016' });
 
 const get = (options: HTTPProps): AxiosPromise => {
   return authAxios.get(`${options.url}`, { params: options.data, responseType: options.responseType });
